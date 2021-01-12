@@ -5,7 +5,7 @@ compose:
 
 migrate:
 	migrate -source file://migrations \
-			-database postgres://postgres:secret@localhost:5432/syndicate?sslmode=disable up
+			-database postgres://user:secret@localhost:5432/syndicate?sslmode=disable up
 
 migrate-down:
 	migrate -source file://migrations \
