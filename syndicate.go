@@ -3,10 +3,10 @@ package syndicate
 import "github.com/google/uuid"
 
 type Manufacturer struct {
-	ID uuid.UUID `db:"id"`
-	name string	`db:"name"`
-	active bool `db:"active"`
-	address_id uuid.UUID `db:"address_id"`
+	ID        uuid.UUID `db:"id"`
+	Name      string    `db:"name"`
+	Active    bool      `db:"active"`
+	AddressID uuid.UUID `db:"address_id"`
 }
 
 type ManufacturerStore interface {
@@ -18,11 +18,11 @@ type ManufacturerStore interface {
 }
 
 type Series struct {
-	ID uuid.UUID `db:"id"`
-	manufacturer_id uuid.UUID `db:"id"`
-	name string `db:"name"`
-	number string `db:"number"`
-	description string `db:"description"`
+	ID             uuid.UUID `db:"id"`
+	ManufacturerID uuid.UUID `db:"id"`
+	Name           string    `db:"name"`
+	SeriesNumber   string    `db:"number"`
+	Description    string    `db:"description"`
 }
 
 type SeriesStore interface {
@@ -34,10 +34,10 @@ type SeriesStore interface {
 }
 
 type Model struct {
-	ID uuid.UUID `db:"id"`
-	series_id uuid.UUID `db:"id"`
-	number string `db:"number"`
-	image []byte `db:"image"`
+	ID          uuid.UUID `db:"id"`
+	SeriesID    uuid.UUID `db:"id"`
+	ModelNumber string    `db:"number"`
+	Image       []byte    `db:"image"`
 }
 
 type ModelStore interface {
@@ -49,10 +49,10 @@ type ModelStore interface {
 }
 
 type Distributor struct {
-	ID uuid.UUID `db:"id"`
-	name string	`db:"name"`
-	active bool `db:"active"`
-	address_id uuid.UUID `db:"address_id"`
+	ID        uuid.UUID `db:"id"`
+	Name      string    `db:"name"`
+	Active    bool      `db:"active"`
+	AddressID uuid.UUID `db:"address_id"`
 }
 
 type DistributorStore interface {
@@ -64,10 +64,10 @@ type DistributorStore interface {
 }
 
 type Branch struct {
-	ID uuid.UUID `db:"id"`
-	distibutor_id uuid.UUID `db:"distributor_id"`
-	active bool `db:"active"`
-	address_id uuid.UUID `db:"address_id"`
+	ID            uuid.UUID `db:"id"`
+	DistributorID uuid.UUID `db:"distributor_id"`
+	Active        bool      `db:"active"`
+	AddressID     uuid.UUID `db:"address_id"`
 }
 
 type BranchStore interface {
@@ -79,13 +79,13 @@ type BranchStore interface {
 }
 
 type Contact struct {
-	ID uuid.UUID `db:"id"`
-	department string `db:"department_id"`
-	first_name string `db:"name"`
-	last_name string `db:"name"`
-	phone string `db:"phone"`
-	email string `db:"email"`
-	active bool `db:"active"`
+	ID         uuid.UUID `db:"id"`
+	Department string    `db:"department_id"`
+	FirstName  string    `db:"name"`
+	LastName   string    `db:"name"`
+	Phone      string    `db:"phone"`
+	Email      string    `db:"email"`
+	Active     bool      `db:"active"`
 }
 
 type ContactStore interface {
@@ -97,13 +97,13 @@ type ContactStore interface {
 }
 
 type Address struct {
-	ID uuid.UUID `db:"id"`
-	address_1 string `db:"address_1"`
-	address_2 string `db:"address_2"`
-	city string `db:"city"`
-	state string `db:"state"`
-	zipcode string `db:"zipcode"`
-	geocode string `db:"geocode"`
+	ID       uuid.UUID `db:"id"`
+	Address1 string    `db:"address_1"`
+	Address2 string    `db:"address_2"`
+	City     string    `db:"city"`
+	State    string    `db:"state"`
+	Zipcode  string    `db:"zipcode"`
+	Geocode  string    `db:"geocode"`
 }
 
 type AddressStore interface {
