@@ -10,9 +10,8 @@ CREATE TABLE addresses (
 
 CREATE TABLE manufacturers (
     id UUID PRIMARY KEY,
-    title TEXT NOT NULL,
+    name TEXT NOT NULL,
     active BOOLEAN,
-    description TEXT NOT NULL,
     address_id UUID REFERENCES addresses (id) ON DELETE CASCADE
 );
 
@@ -33,7 +32,7 @@ CREATE TABLE models (
 
 CREATE TABLE distributors (
     id UUID PRIMARY KEY,
-    title TEXT NOT NULL,
+    name TEXT NOT NULL,
     active BOOLEAN,
     address_id UUID REFERENCES addresses (id) ON DELETE CASCADE
 );
