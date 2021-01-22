@@ -15,7 +15,6 @@ services:
     depends_on:
       - db
     command: -source=file://migrations -database postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@db:5432/$POSTGRES_DB?sslmode=disable up
-    restart: on-failure
 
   adminer:
     image: adminer
