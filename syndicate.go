@@ -28,8 +28,8 @@ type Series struct {
 type SeriesStore interface {
 	Series(id uuid.UUID) (Series, error)
 	SeriesByManufacturer(manufacturerID uuid.UUID) ([]Series, error)
-	CreateSeries(m *Series) error
-	UpdateSeries(m *Series) error
+	CreateSeries(i *Series) error
+	UpdateSeries(i *Series) error
 	DeleteSeries(id uuid.UUID) error
 }
 
@@ -60,8 +60,8 @@ type Distributor struct {
 type DistributorStore interface {
 	Distributor(id uuid.UUID) (Distributor, error)
 	Distributors() ([]Distributor, error)
-	CreateDistributor(m *Distributor) error
-	UpdateDistributor(m *Distributor) error
+	CreateDistributor(d *Distributor) error
+	UpdateDistributor(d *Distributor) error
 	DeleteDistributor(id uuid.UUID) error
 }
 
@@ -74,9 +74,10 @@ type Branch struct {
 
 type BranchStore interface {
 	Branch(id uuid.UUID) (Branch, error)
-	Branchs() ([]Branch, error)
-	CreateBranch(m *Branch) error
-	UpdateBranch(m *Branch) error
+	Branches() ([]Branch, error)
+	BranchesByDistributor(id uuid.UUID) ([]Branch, error)
+	CreateBranch(b *Branch) error
+	UpdateBranch(b *Branch) error
 	DeleteBranch(id uuid.UUID) error
 }
 
@@ -93,8 +94,8 @@ type Contact struct {
 type ContactStore interface {
 	Contact(id uuid.UUID) (Contact, error)
 	Contacts() ([]Contact, error)
-	CreateContact(m *Contact) error
-	UpdateContact(m *Contact) error
+	CreateContact(c *Contact) error
+	UpdateContact(c *Contact) error
 	DeleteContact(id uuid.UUID) error
 }
 
@@ -111,7 +112,7 @@ type Address struct {
 type AddressStore interface {
 	Address(id uuid.UUID) (Address, error)
 	Addresses() ([]Address, error)
-	CreateAddress(m *Address) error
-	UpdateAddress(m *Address) error
+	CreateAddress(a *Address) error
+	UpdateAddress(a *Address) error
 	DeleteAddress(id uuid.UUID) error
 }
