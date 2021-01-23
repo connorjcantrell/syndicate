@@ -26,12 +26,12 @@ func (s *SeriesStore) Series(id uuid.UUID) (syndicate.Series, error) {
 	return i, nil
 }
 
-func (s *SeriesStore) Seriess() ([]syndicate.Series, error) {
-	var ii []syndicate.Series
-	if err := s.Select(&ii, `SELECT * FROM series`); err != nil {
+func (s *SeriesStore) SeriesByManufacturer(manufacturerID uuid.UUID) ([]syndicate.Series, error) {
+	var ss []syndicate.Series
+	if err := s.Get(&ss, `SELECT * FROM models WHERE series_id = $1`, manufacturerID); err != nil {
 		return []syndicate.Series{}, fmt.Errorf("error getting series: %w", err)
 	}
-	return ii, nil
+	return ss, nil
 }
 
 func (s *SeriesStore) CreateSeries(i *syndicate.Series) error {
