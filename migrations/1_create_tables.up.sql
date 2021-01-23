@@ -25,6 +25,7 @@ CREATE TABLE series (
 
 CREATE TABLE models (
     id UUID PRIMARY KEY,
+    manufacturer_id UUID NULL REFERENCES manufacturers (id) ON DELETE CASCADE,
     series_id UUID NOT NULL REFERENCES series (id) ON DELETE CASCADE,
     model_number TEXT NOT NULL,
     image BYTEA
