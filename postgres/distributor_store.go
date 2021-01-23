@@ -24,7 +24,9 @@ func (s *DistributorStore) Distributor(id uuid.UUID) (syndicate.Distributor, err
 
 func (s *DistributorStore) Distributors() ([]syndicate.Distributor, error) {
 	var dd []syndicate.Distributor
-	if err := s.Get(&dd, `SELECT * FROM distributors`); err != nil {
+	if err := s.Get(&dd,
+		`SELECT * FROM distributors
+		ORDER BY name`); err != nil {
 		return []syndicate.Distributor{}, fmt.Errorf("error gettting distributors: %w", err)
 	}
 	return dd, nil
