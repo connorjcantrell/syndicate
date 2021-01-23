@@ -21,7 +21,7 @@ type ManufacturerStore struct {
 func (s *ManufacturerStore) Manufacturer(id uuid.UUID) (syndicate.Manufacturer, error) {
 	var m syndicate.Manufacturer
 	if err := s.Get(&m, `SELECT * FROM manufacturers WHERE id = $1`, id); err != nil {
-		return syndicate.Manufacturer{}, fmt.Errorf("error getting thread: %w", err)
+		return syndicate.Manufacturer{}, fmt.Errorf("error getting manufacturer: %w", err)
 	}
 	return m, nil
 }
@@ -40,7 +40,7 @@ func (s *ManufacturerStore) CreateManufacturer(m *syndicate.Manufacturer) error 
 		m.Name,
 		m.Active,
 		m.AddressID); err != nil {
-		return fmt.Errorf("error creating thread: %w", err)
+		return fmt.Errorf("error creating manufacturer: %w", err)
 	}
 	return nil
 }
@@ -58,7 +58,7 @@ func (s *ManufacturerStore) UpdateManufacturer(m *syndicate.Manufacturer) error 
 
 func (s *ManufacturerStore) DeleteManufacturer(id uuid.UUID) error {
 	if _, err := s.Exec(`DELETE FROM manufacturers WHERE id = $1`, id); err != nil {
-		return fmt.Errorf("error deleting thread: %w", err)
+		return fmt.Errorf("error deleting manufacturer: %w", err)
 	}
 	return nil
 }
