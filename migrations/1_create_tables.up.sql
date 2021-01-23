@@ -18,7 +18,7 @@ CREATE TABLE manufacturers (
 CREATE TABLE series (
     id UUID PRIMARY KEY,
     manufacturer_id UUID NOT NULL REFERENCES manufacturers (id) ON DELETE CASCADE,
-    title TEXT NOT NULL,
+    name TEXT NOT NULL,
     series_number TEXT NOT NULL,
     description TEXT NOT NULL
 );
