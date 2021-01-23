@@ -19,30 +19,32 @@ type ManufacturerStore interface {
 
 type Series struct {
 	ID             uuid.UUID `db:"id"`
-	ManufacturerID uuid.UUID `db:"id"`
+	ManufacturerID uuid.UUID `db:"manufacturer_id"`
 	Name           string    `db:"name"`
-	SeriesNumber   string    `db:"number"`
+	SeriesNumber   string    `db:"series_number"`
 	Description    string    `db:"description"`
 }
 
 type SeriesStore interface {
 	Series(id uuid.UUID) (Series, error)
-	Seriess() ([]Series, error)
+	SeriesByManufacturer(manufacturerID uuid.UUID) ([]Series, error)
 	CreateSeries(m *Series) error
 	UpdateSeries(m *Series) error
 	DeleteSeries(id uuid.UUID) error
 }
 
 type Model struct {
-	ID          uuid.UUID `db:"id"`
-	SeriesID    uuid.UUID `db:"id"`
-	ModelNumber string    `db:"number"`
-	Image       []byte    `db:"image"`
+	ID             uuid.UUID `db:"id"`
+	ManufacturerID uuid.UUID `db:"manufacturer_id"`
+	SeriesID       uuid.UUID `db:"series_id"`
+	ModelNumber    string    `db:"number"`
+	Image          []byte    `db:"image"`
 }
 
 type ModelStore interface {
 	Model(id uuid.UUID) (Model, error)
-	Models() ([]Model, error)
+	ModelsByManufacturer(manufacturerID uuid.UUID) ([]Model, error)
+	ModelsBySeries(seriesID uuid.UUID) ([]Model, error)
 	CreateModel(m *Model) error
 	UpdateModel(m *Model) error
 	DeleteModel(id uuid.UUID) error
@@ -81,8 +83,8 @@ type BranchStore interface {
 type Contact struct {
 	ID         uuid.UUID `db:"id"`
 	Department string    `db:"department_id"`
-	FirstName  string    `db:"name"`
-	LastName   string    `db:"name"`
+	FirstName  string    `db:"first_name"`
+	LastName   string    `db:"last_name"`
 	Phone      string    `db:"phone"`
 	Email      string    `db:"email"`
 	Active     bool      `db:"active"`
