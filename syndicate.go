@@ -81,38 +81,40 @@ type BranchStore interface {
 	DeleteBranch(id uuid.UUID) error
 }
 
-type Contact struct {
-	ID         uuid.UUID `db:"id"`
-	Department string    `db:"department_id"`
-	FirstName  string    `db:"first_name"`
-	LastName   string    `db:"last_name"`
-	Phone      string    `db:"phone"`
-	Email      string    `db:"email"`
-	Active     bool      `db:"active"`
-}
+// type Contact struct {
+// 	ID         uuid.UUID `db:"id"`
+// 	Department string    `db:"department_id"`
+// 	FirstName  string    `db:"first_name"`
+// 	LastName   string    `db:"last_name"`
+// 	Phone      string    `db:"phone"`
+// 	Email      string    `db:"email"`
+// 	Active     bool      `db:"active"`
+// }
 
-type ContactStore interface {
-	Contact(id uuid.UUID) (Contact, error)
-	Contacts() ([]Contact, error)
-	CreateContact(c *Contact) error
-	UpdateContact(c *Contact) error
-	DeleteContact(id uuid.UUID) error
-}
+// type ContactStore interface {
+// 	Contact(id uuid.UUID) (Contact, error)
+// 	ContactsByBranch(id uuid.UUID) ([]Contact, error)
+// 	ContactsByManufacturer(id uuid.UUID) ([]Contact, error)
+// 	ContactsByDistributor(id uuid.UUID) ([]Contact, error)
+// 	CreateContact(c *Contact) error
+// 	UpdateContact(c *Contact) error
+// 	DeleteContact(id uuid.UUID) error
+// }
 
-type Address struct {
-	ID       uuid.UUID `db:"id"`
-	Address1 string    `db:"address_1"`
-	Address2 string    `db:"address_2"`
-	City     string    `db:"city"`
-	State    string    `db:"state"`
-	Zipcode  string    `db:"zipcode"`
-	Geocode  string    `db:"geocode"`
-}
+// type Address struct {
+// 	ID       uuid.UUID `db:"id"`
+// 	Address1 string    `db:"address_1"`
+// 	Address2 string    `db:"address_2"`
+// 	City     string    `db:"city"`
+// 	State    string    `db:"state"`
+// 	Zipcode  string    `db:"zipcode"`
+// 	Geocode  string    `db:"geocode"`
+// }
 
-type AddressStore interface {
-	Address(id uuid.UUID) (Address, error)
-	Addresses() ([]Address, error)
-	CreateAddress(a *Address) error
-	UpdateAddress(a *Address) error
-	DeleteAddress(id uuid.UUID) error
-}
+// type AddressStore interface {
+// 	Address(id uuid.UUID) (Address, error)
+// 	Addresses() ([]Address, error)
+// 	CreateAddress(a *Address) error
+// 	UpdateAddress(a *Address) error
+// 	DeleteAddress(id uuid.UUID) error
+// }
