@@ -81,6 +81,14 @@ type BranchStore interface {
 	DeleteBranch(id uuid.UUID) error
 }
 
+type Store interface {
+	ManufacturerStore
+	SeriesStore
+	ModelStore
+	DistributorStore
+	BranchStore
+}
+
 // type Contact struct {
 // 	ID         uuid.UUID `db:"id"`
 // 	Department string    `db:"department_id"`
