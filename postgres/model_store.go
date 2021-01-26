@@ -8,12 +8,6 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-func NewModelStore(db *sqlx.DB) *ModelStore {
-	return &ModelStore{
-		DB: db,
-	}
-}
-
 type ModelStore struct {
 	*sqlx.DB
 }
