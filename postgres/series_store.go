@@ -8,12 +8,6 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-func NewSeriesStore(db *sqlx.DB) *SeriesStore {
-	return &SeriesStore{
-		DB: db,
-	}
-}
-
 type SeriesStore struct {
 	*sqlx.DB
 }
