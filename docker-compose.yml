@@ -2,13 +2,14 @@ version: "3.8"
 
 services:
   db:
-    image: postgres
-    ports:
-      - "5432:5432"
+    image: postgres:latest
+    restart: unless-stopped
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: $POSTGRES_DB
-      POSTGRES_USER: $POSTGRES_USER
-      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
 
   migrate:
     image: migrate/migrate
@@ -16,7 +17,7 @@ services:
       - ./migrations:/migrations
     depends_on:
       - db
-    command: -source=file://migrations -database postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@db:5432/$POSTGRES_DB?sslmode=disable up
+    command: -source=file://migrations -database postgres://postgres:postgres@db:5432/postgres?sslmode=disable up
 
   adminer:
     image: adminer
