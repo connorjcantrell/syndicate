@@ -8,12 +8,6 @@ import (
 	"github.com/jmoiron/sqlx"
 )
 
-func NewManufacturerStore(db *sqlx.DB) *ManufacturerStore {
-	return &ManufacturerStore{
-		DB: db,
-	}
-}
-
 type ManufacturerStore struct {
 	*sqlx.DB
 }
